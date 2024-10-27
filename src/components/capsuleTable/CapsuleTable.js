@@ -4,17 +4,30 @@ import { Column } from "primereact/column";
 
 const CapsuleTable = ({ capsules, onEditClick }) => {
   return (
-    <DataTable value={capsules} paginator rows={5}>
-      <Column field="status" header="Status" />
-      <Column field="original_launch" header="Launch Date" />
-      <Column field="type" header="Type" />
-      <Column
-        body={(rowData) => (
-          <button onClick={() => onEditClick(rowData)}>Edit</button>
-        )}
-        header="Actions"
-      />
-    </DataTable>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Status</th>
+          <th>Launch Date</th>
+          <th>Type</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {capsules.map((capsule) => (
+          <tr key={capsule.id}>
+            <td>{capsule.id}</td>
+            <td>{capsule.status}</td>
+            <td>{capsule.original_launch}</td>
+            <td>{capsule.type}</td>
+            <td>
+              <button onClick={() => onEditClick(capsule)}>Edit</button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 };
 

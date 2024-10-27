@@ -8,19 +8,23 @@ export const fetchCapsules = createAsyncThunk("capsules/fetch", async () => {
 
 const capsulesSlice = createSlice({
   name: "capsules",
-  initialState: { list: [] },
+  initialState: { list: [], filtered: [] },
   reducers: {
     setFilteredCapsules: (state, action) => {
       state.filtered = action.payload;
     },
     addCapsule: (state, action) => {
       state.list.push(action.payload);
+      state.filtered.push(action.payload);
     },
     editCapsule: (state, action) => {
       const index = state.list.findIndex(
         (capsule) => capsule.id === action.payload.id
       );
-      if (index >= 0) state.list[index] = action.payload;
+      if (index !== -1) {
+        state.list[index] = action.payload;
+        state.filtered[index] = action.payload;
+      }
     },
   },
   extraReducers: (builder) => {
@@ -31,8 +35,8 @@ const capsulesSlice = createSlice({
   },
 });
 
-export const { setFilteredCapsules } = capsulesSlice.actions;
+export const { setFilteredCapsules, addCapsule, editCapsule } =
+  capsulesSlice.actions;
 export const selectFilteredCapsules = (state) => state.capsules.filtered;
-// export const selectCapsules = (state) => state.capsules.list;
+
 export default capsulesSlice.reducer;
-// export const { addCapsule, editCapsule } = capsulesSlice.actions;
