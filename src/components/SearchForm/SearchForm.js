@@ -32,7 +32,14 @@ const SearchForm = ({ capsules }) => {
     >
       {() => (
         <Form>
-          <Field name="status" placeholder="Status" />
+          {/* <label htmlFor="status">Status</label> */}
+          <Field name="status" as="select">
+            <option value="">Select status</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+            <option value="retired">Retired</option>
+          </Field>
+
           <Field name="original_launch" placeholder="Launch Date" />
           <Field name="type" placeholder="Type" />
           <button type="submit">Search</button>

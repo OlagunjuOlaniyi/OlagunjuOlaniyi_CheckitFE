@@ -25,7 +25,7 @@ const CapsuleTable = ({ onEditClick }) => {
         <thead>
           <tr>
             <th>ID</th>
-            <th>Status</th>
+            <th className="">Status</th>
             <th>Launch Date</th>
             <th>Type</th>
             <th>Actions</th>

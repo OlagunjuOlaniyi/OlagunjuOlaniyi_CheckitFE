@@ -39,4 +39,16 @@ export const { setFilteredCapsules, addCapsule, editCapsule } =
   capsulesSlice.actions;
 export const selectFilteredCapsules = (state) => state.capsules.filtered;
 
+// Selector for total capsules count
+export const selectTotalCapsules = (state) => state.capsules.list.length;
+
+// Selector for total active capsules
+export const selectActiveCapsules = (state) =>
+  state.capsules.list.filter((capsule) => capsule.status === "active").length;
+
+// Selector for total destroyed capsules
+export const selectDestroyedCapsules = (state) =>
+  state.capsules.list.filter((capsule) => capsule.status === "destroyed")
+    .length;
+
 export default capsulesSlice.reducer;

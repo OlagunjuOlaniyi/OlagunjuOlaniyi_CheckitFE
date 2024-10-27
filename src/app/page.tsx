@@ -6,6 +6,7 @@ import { fetchCapsules, selectFilteredCapsules } from "../store/capsulesSlice";
 import CapsuleTable from "../components/CapsuleTable/CapsuleTable";
 import SearchForm from "../components/SearchForm/SearchForm";
 import CapsuleModal from "../components/CapsuleModal/CapsuleModal";
+import CapsuleStats from "../components/CapsuleStats/CapsuleStats";
 import CapsuleForm from "../components/CapsuleForm/CapsuleForm";
 
 const HomePage = () => {
@@ -34,6 +35,7 @@ const HomePage = () => {
 
   return (
     <div>
+      <CapsuleStats />
       <SearchForm capsules={capsules} />
       <button onClick={handleAddNew}>Add New Capsule</button>
       <CapsuleTable capsules={capsules} onEditClick={handleEditClick} />
