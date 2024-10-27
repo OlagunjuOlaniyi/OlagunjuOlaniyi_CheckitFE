@@ -12,11 +12,19 @@ const CapsuleStats = () => {
   const destroyedCapsules = useSelector(selectDestroyedCapsules);
 
   return (
-    <div className="capsule-stats">
-      <h3>Capsule Stats</h3>
-      <p>Total Capsules: {totalCapsules}</p>
-      <p>Total Active Capsules: {activeCapsules}</p>
-      <p>Total Destroyed Capsules: {destroyedCapsules}</p>
+    <div className="capsule-stats flex justify-around gap-3 my-5">
+      <div className="bg-zinc-800 text-[#fff] w-[30%] flex flex-col gap-3 border border-r-2 rounded-lg py-6 px-4">
+        <p className="font-bold">Total Capsules</p>
+        <h2 className="text-[25px]">{totalCapsules}</h2>
+      </div>
+      <div className="bg-[#fff] text-[#000] w-[30%] flex flex-col gap-3 border border-r-2 rounded-lg py-6 px-4">
+        <p className="font-bold">Total Active Capsules</p>
+        <h2 className="text-[25px]">{activeCapsules}</h2>
+      </div>
+      <div className="bg-[#fff] text-[#000] w-[30%] flex flex-col gap-3 border border-r-2 rounded-lg py-6 px-4">
+        <p className="font-bold">Total Destroyed Capsules</p>
+        <h2 className="text-[25px]">{destroyedCapsules}</h2>
+      </div>
     </div>
   );
 };

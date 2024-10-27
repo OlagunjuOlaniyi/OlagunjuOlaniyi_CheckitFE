@@ -31,18 +31,35 @@ const SearchForm = ({ capsules }) => {
       onSubmit={handleSearch}
     >
       {() => (
-        <Form>
+        <Form className="flex gap-3">
           {/* <label htmlFor="status">Status</label> */}
-          <Field name="status" as="select">
+          <Field
+            name="status"
+            as="select"
+            className="border-2 rounded-md py-2 px-2"
+          >
             <option value="">Select status</option>
             <option value="active">Active</option>
             <option value="inactive">Inactive</option>
             <option value="retired">Retired</option>
           </Field>
 
-          <Field name="original_launch" placeholder="Launch Date" />
-          <Field name="type" placeholder="Type" />
-          <button type="submit">Search</button>
+          <Field
+            name="original_launch"
+            placeholder="Launch Date"
+            className="border-2 rounded-md py-2 px-2"
+          />
+          <Field
+            name="type"
+            placeholder="Type"
+            className="border-2 rounded-md py-2 px-2"
+          />
+          <button
+            type="submit"
+            className="py-2 px-4 bg-[#161616] text-[#fff] border rounded-md"
+          >
+            Filter
+          </button>
         </Form>
       )}
     </Formik>

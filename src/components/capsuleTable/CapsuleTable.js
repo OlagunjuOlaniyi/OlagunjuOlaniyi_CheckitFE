@@ -20,9 +20,10 @@ const CapsuleTable = ({ onEditClick }) => {
     setCurrentPage(newPage);
   };
   return (
-    <div>
+    <div className="border-2 rounded-3xl flex flex-col gap-3 py-3 px-3">
+      <h1 className="font-bold text-[30px]">Capsules</h1>
       <table>
-        <thead>
+        <thead className="border-b">
           <tr>
             <th>ID</th>
             <th className="">Status</th>
@@ -33,7 +34,7 @@ const CapsuleTable = ({ onEditClick }) => {
         </thead>
         <tbody>
           {currentItems.map((capsule) => (
-            <tr key={capsule.id}>
+            <tr key={capsule.id} className="border-b">
               <td>{capsule.id}</td>
               <td>{capsule.status}</td>
               <td>{capsule.original_launch}</td>
@@ -47,7 +48,7 @@ const CapsuleTable = ({ onEditClick }) => {
       </table>
 
       {/* pagination  */}
-      <div className="pagination">
+      <div className="pagination text-center">
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
