@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCapsules, selectFilteredCapsules } from "../store/capsulesSlice";
 import CapsuleTable from "../components/CapsuleTable/CapsuleTable";
 import SearchForm from "../components/SearchForm/SearchForm";
+import CapsuleModal from "../components/CapsuleModal/CapsuleModal";
 import CapsuleForm from "../components/CapsuleForm/CapsuleForm";
 
 const HomePage = () => {
@@ -19,12 +20,12 @@ const HomePage = () => {
 
   const handleAddNew = () => {
     setEditingCapsule(null); // Clear any previous edit data
-    setFormOpen(true); // Open form for adding
+    setFormOpen(true); // this opens modal for adding
   };
 
   const handleEditClick = (capsule: any) => {
     setEditingCapsule(capsule);
-    setFormOpen(true); // Open form with editing data
+    setFormOpen(true); // This opens modal with editing data
   };
 
   const handleCloseForm = () => {
@@ -36,9 +37,9 @@ const HomePage = () => {
       <SearchForm capsules={capsules} />
       <button onClick={handleAddNew}>Add New Capsule</button>
       <CapsuleTable capsules={capsules} onEditClick={handleEditClick} />
-      {isFormOpen && (
+      <CapsuleModal isOpen={isFormOpen} onRequestClose={handleCloseForm}>
         <CapsuleForm initialValues={editingCapsule} onClose={handleCloseForm} />
-      )}
+      </CapsuleModal>
     </div>
   );
 };
