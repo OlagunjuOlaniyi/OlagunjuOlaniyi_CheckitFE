@@ -24,14 +24,18 @@ const CapsuleModal = ({ isOpen, onRequestClose, children }) => {
           bottom: "auto",
           marginRight: "-50%",
           transform: "translate(-50%, -50%)",
-          width: "400px",
+          width: "40%",
           padding: "20px",
         },
       }}
     >
       {children}
-      <button onClick={onRequestClose} style={{ marginTop: "20px" }}>
-        Close
+      <button
+        onClick={onRequestClose}
+        style={{ marginTop: "20px" }}
+        className="text-gray-600 bg-[#ebe8e8] py-2 px-5 rounded-sm"
+      >
+        Cancel
       </button>
     </Modal>
   );
