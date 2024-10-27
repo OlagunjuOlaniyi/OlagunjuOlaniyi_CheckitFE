@@ -4,11 +4,15 @@ import React, { useEffect } from "react";
 import CapsuleTable from "../components/CapsuleTable/CapsuleTable";
 import SearchForm from "../components/SearchForm/SearchForm";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCapsules, selectCapsules } from "../store/capsulesSlice";
+import {
+  fetchCapsules,
+  // selectCapsules,
+  selectFilteredCapsules,
+} from "../store/capsulesSlice";
 
 const HomePage = () => {
   const dispatch = useDispatch();
-  const capsules = useSelector(selectCapsules);
+  const capsules = useSelector(selectFilteredCapsules);
 
   useEffect(() => {
     dispatch(fetchCapsules());
@@ -16,11 +20,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <SearchForm
-        onSearch={(values: any) => {
-          /* search logic */
-        }}
-      />
+      <SearchForm capsules={capsules} />
       <CapsuleTable
         capsules={capsules}
         onEditClick={(capsule: any) => {

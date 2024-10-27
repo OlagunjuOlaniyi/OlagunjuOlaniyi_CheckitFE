@@ -10,6 +10,9 @@ const capsulesSlice = createSlice({
   name: "capsules",
   initialState: { list: [] },
   reducers: {
+    setFilteredCapsules: (state, action) => {
+      state.filtered = action.payload;
+    },
     addCapsule: (state, action) => {
       state.list.push(action.payload);
     },
@@ -23,10 +26,13 @@ const capsulesSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchCapsules.fulfilled, (state, action) => {
       state.list = action.payload;
+      state.filtered = action.payload;
     });
   },
 });
 
-export const selectCapsules = (state) => state.capsules.list;
+export const { setFilteredCapsules } = capsulesSlice.actions;
+export const selectFilteredCapsules = (state) => state.capsules.filtered;
+// export const selectCapsules = (state) => state.capsules.list;
 export default capsulesSlice.reducer;
-export const { addCapsule, editCapsule } = capsulesSlice.actions;
+// export const { addCapsule, editCapsule } = capsulesSlice.actions;
