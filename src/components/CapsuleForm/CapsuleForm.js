@@ -29,7 +29,9 @@ const CapsuleForm = ({ initialValues, onClose }) => {
 
   return (
     <div>
-      <h2 className="font-bold text-[22px]">Add new capsule</h2>
+      <h2 className="font-bold text-[22px]">
+        {initialValues ? "Edit" : "Add new"} capsule
+      </h2>
       <form onSubmit={formik.handleSubmit}>
         <h3 className="font-semibold text-[20px] my-3">User details</h3>
         <div className="flex gap-2 justify-between mt-2">
@@ -52,14 +54,18 @@ const CapsuleForm = ({ initialValues, onClose }) => {
             <label htmlFor="status" className="text-[14px]">
               Status
             </label>
-            <input
+            <select
               id="status"
               name="status"
-              type="text"
               onChange={formik.handleChange}
               value={formik.values.status}
               className="border-2 py-2 px-2 rounded-md"
-            />
+            >
+              <option value="">Select</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+              <option value="retired">Retired</option>
+            </select>
             {formik.errors.status ? <div>{formik.errors.status}</div> : null}
           </div>
         </div>
@@ -97,7 +103,7 @@ const CapsuleForm = ({ initialValues, onClose }) => {
         </div>
         <button
           type="submit"
-          className="bg-[#1d1d1d] text-white py-2 px-5 rounded-sm"
+          className="bg-[#1d1d1d] text-white py-2 px-8 mt-2 rounded-md"
         >
           {initialValues ? "Update" : "Add User"}
         </button>

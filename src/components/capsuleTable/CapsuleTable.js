@@ -20,35 +20,42 @@ const CapsuleTable = ({ onEditClick }) => {
     setCurrentPage(newPage);
   };
   return (
-    <div className="border-2 rounded-3xl flex flex-col gap-3 py-3 px-3">
-      <h1 className="font-bold text-[30px]">Capsules</h1>
-      <table>
-        <thead className="border-b">
-          <tr>
-            <th>ID</th>
-            <th className="">Status</th>
-            <th>Launch Date</th>
-            <th>Type</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentItems.map((capsule) => (
-            <tr key={capsule.id} className="border-b">
-              <td>{capsule.id}</td>
-              <td>{capsule.status}</td>
-              <td>{capsule.original_launch}</td>
-              <td>{capsule.type}</td>
-              <td>
-                <button onClick={() => onEditClick(capsule)}>Edit</button>
-              </td>
+    <div className="flex flex-col text-center gap-3 py-3 lg:px-4">
+      <div className="border-2 rounded-3xl px-4 pb-10 flex flex-col text-center">
+        <h1 className="font-bold text-[30px] text-left">Capsules</h1>
+        <table className="py-3 mt-3 lg:text-[14px] text-[13px] overflow-auto">
+          <thead className="border-b py-3">
+            <tr className="py-3">
+              <th className="text-left py-3">Capsule ID</th>
+              <th>Original Launch Date</th>
+              <th className="">Status</th>
+              <th>Type</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {currentItems.map((capsule) => (
+              <tr key={capsule.id} className="border-b">
+                <td className="text-left py-3">{capsule.capsule_id}</td>
+                <td>{capsule.original_launch}</td>
+                <td>{capsule.status}</td>
+                <td>{capsule.type}</td>
+                <td>
+                  <button
+                    onClick={() => onEditClick(capsule)}
+                    className="underline"
+                  >
+                    Edit
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       {/* pagination  */}
-      <div className="pagination text-center">
+      <div className="pagination text-center flex justify-center gap-3 mt-3">
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
@@ -60,6 +67,11 @@ const CapsuleTable = ({ onEditClick }) => {
             key={i + 1}
             onClick={() => handlePageChange(i + 1)}
             disabled={currentPage === i + 1}
+            className={`${
+              currentPage === i + 1
+                ? "bg-[#000000af] text-white"
+                : "bg-[#00000031] text-black"
+            } py-1 px-3 rounded-sm font-bold text-[14px]`}
           >
             {i + 1}
           </button>

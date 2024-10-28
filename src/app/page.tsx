@@ -37,9 +37,14 @@ const HomePage = () => {
     <div>
       <CapsuleStats />
       <SearchForm capsules={capsules} />
-      <button onClick={handleAddNew} className="border my-4 py-2 px-3">
-        Add New
-      </button>
+      <div className="flex justify-end">
+        <button
+          onClick={handleAddNew}
+          className="border my-4 py-2 px-3 font-bold"
+        >
+          + Add New
+        </button>
+      </div>
       <CapsuleTable capsules={capsules} onEditClick={handleEditClick} />
       <CapsuleModal isOpen={isFormOpen} onRequestClose={handleCloseForm}>
         <CapsuleForm initialValues={editingCapsule} onClose={handleCloseForm} />

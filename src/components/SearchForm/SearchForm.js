@@ -31,12 +31,12 @@ const SearchForm = ({ capsules }) => {
       onSubmit={handleSearch}
     >
       {() => (
-        <Form className="flex gap-3">
+        <Form className="flex flex-col lg:flex-row gap-3 px-3">
           {/* <label htmlFor="status">Status</label> */}
           <Field
             name="status"
             as="select"
-            className="border-2 rounded-md py-2 px-2"
+            className="border-2 rounded-md py-2 px-2 lg:w-[250px]"
           >
             <option value="">Select status</option>
             <option value="active">Active</option>
@@ -56,7 +56,7 @@ const SearchForm = ({ capsules }) => {
           />
           <button
             type="submit"
-            className="py-2 px-4 bg-[#161616] text-[#fff] border rounded-md"
+            className="py-2 px-4 w-[150px] bg-[#000000af] text-[#fff] border rounded-md"
           >
             Filter
           </button>
