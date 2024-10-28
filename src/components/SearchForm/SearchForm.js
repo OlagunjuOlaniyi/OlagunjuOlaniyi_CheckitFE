@@ -14,6 +14,11 @@ const SearchForm = ({ capsules }) => {
   const dispatch = useDispatch();
 
   const handleSearch = (values) => {
+    // If all fields are empty, reset to default data
+    if (!values.status && !values.original_launch && !values.type) {
+      dispatch(setFilteredCapsules(capsules));
+      return;
+    }
     const filtered = capsules.filter(
       (capsule) =>
         (!values.status || capsule.status.includes(values.status)) &&
