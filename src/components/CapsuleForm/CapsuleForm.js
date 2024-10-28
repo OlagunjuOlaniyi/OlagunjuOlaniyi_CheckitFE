@@ -10,7 +10,7 @@ const CapsuleForm = ({ initialValues, onClose }) => {
   const formik = useFormik({
     initialValues: initialValues || { id: "", status: "", description: "" },
     validationSchema: Yup.object({
-      id: Yup.string().required("ID is required"),
+      capsule_id: Yup.string().required("ID is required"),
       status: Yup.string().required("Status is required"),
       original_launch: Yup.date().required("Launch date is required"),
       type: Yup.string().required("Type is required"),
@@ -36,15 +36,15 @@ const CapsuleForm = ({ initialValues, onClose }) => {
         <h3 className="font-semibold text-[20px] my-3">User details</h3>
         <div className="flex gap-2 justify-between mt-2">
           <div className="flex flex-col w-[48%]">
-            <label htmlFor="id" className="text-[14px]">
+            <label htmlFor="capsule_id" className="text-[14px]">
               Capsule ID*
             </label>
             <input
-              id="id"
-              name="id"
+              id="capsule_id"
+              name="capsule_id"
               type="text"
               onChange={formik.handleChange}
-              value={formik.values.id}
+              value={formik.values.capsule_id}
               disabled={!!initialValues}
               className="border-2 py-2 px-2 rounded-md "
             />
