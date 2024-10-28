@@ -11,6 +11,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <header>
+        <title>SpaceX Capsules</title>
+      </header>
       <body>
         <Provider store={store}>{children}</Provider>
       </body>
