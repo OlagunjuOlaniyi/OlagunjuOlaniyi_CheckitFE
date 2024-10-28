@@ -1,9 +1,25 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { selectFilteredCapsules } from "../../store/capsulesSlice";
+// import { useSelector } from "react-redux";
+// import { selectFilteredCapsules } from "../../store/capsulesSlice";
 
-const CapsuleTable = ({ onEditClick }) => {
-  const capsules = useSelector(selectFilteredCapsules); // Get data from Redux store
+interface Capsule {
+  id: string;
+  capsule_id: string;
+  original_launch: string;
+  status: string;
+  type: string;
+}
+
+interface CapsuleTableProps {
+  capsules: Capsule[];
+  onEditClick: (capsule: Capsule) => void;
+}
+
+const CapsuleTable: React.FC<CapsuleTableProps> = ({
+  capsules,
+  onEditClick,
+}) => {
+  // const capsules = useSelector(selectFilteredCapsules);
   const [currentPage, setCurrentPage] = useState(1); // Current page state
   const itemsPerPage = 5; // Set items per page
 
@@ -16,7 +32,7 @@ const CapsuleTable = ({ onEditClick }) => {
   const totalPages = Math.ceil(capsules.length / itemsPerPage);
 
   // Handler to navigate pages
-  const handlePageChange = (newPage) => {
+  const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
   };
   return (

@@ -3,17 +3,29 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCapsules, selectFilteredCapsules } from "../store/capsulesSlice";
-import CapsuleTable from "../components/CapsuleTable/CapsuleTable";
+import CapsuleTable from "../components/capsuleTable/CapsuleTable";
 import SearchForm from "../components/SearchForm/SearchForm";
 import CapsuleModal from "../components/CapsuleModal/CapsuleModal";
 import CapsuleStats from "../components/CapsuleStats/CapsuleStats";
 import CapsuleForm from "../components/CapsuleForm/CapsuleForm";
+import { AppDispatch, RootState } from "../store/index";
 
+//  the Capsule interface
+interface Capsule {
+  id: string;
+  capsule_id: string;
+  original_launch: string;
+  status: string;
+  type: string;
+}
 const HomePage = () => {
-  const dispatch = useDispatch();
-  const capsules = useSelector(selectFilteredCapsules);
+  const dispatch: AppDispatch = useDispatch(); // Specify the dispatch type
+  const capsules = useSelector((state: RootState) =>
+    selectFilteredCapsules(state)
+  );
+  // const capsules = useSelector(selectFilteredCapsules);
   const [isFormOpen, setFormOpen] = useState(false);
-  const [editingCapsule, setEditingCapsule] = useState(null);
+  const [editingCapsule, setEditingCapsule] = useState<Capsule | null>(null);
 
   useEffect(() => {
     dispatch(fetchCapsules());
@@ -24,7 +36,7 @@ const HomePage = () => {
     setFormOpen(true); // this opens modal for adding
   };
 
-  const handleEditClick = (capsule: any) => {
+  const handleEditClick = (capsule: Capsule) => {
     setEditingCapsule(capsule);
     setFormOpen(true); // This opens modal with editing data
   };
